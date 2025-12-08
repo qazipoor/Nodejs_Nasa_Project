@@ -1,9 +1,9 @@
 const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
-const url = `${protocol}://localhost:${process.env.PORT || 8000}`;
+const API_URL = `${protocol}://localhost:${process.env.PORT || 8000}`;
 
 // Load planets and return as JSON.
 async function httpGetPlanets() {
-  const response = await fetch(url + '/planets');
+  const response = await fetch(API_URL + '/planets');
   return await response.json();
 }
 
