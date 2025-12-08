@@ -1,0 +1,13 @@
+# VS Code workspace file
+*.code-workspace
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
