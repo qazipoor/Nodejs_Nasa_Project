@@ -1,0 +1,15 @@
+{
+  "folders": [
+	{
+		"name": "Client",
+		"path": "Client"
+	},
+	{
+		"name": "Server",
+		"path": "Server"
+	}
+  ],
+  "settings": {
+    "terminal.integrated.defaultProfile.windows": "bash"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "terminal.integrated.defaultProfile.windows": "bash",
+  "terminal.integrated.profiles.windows": {
+    "bash": {
+      "source": "Git Bash",
+      "icon": "terminal-bash"
+    }
+  }
+}
