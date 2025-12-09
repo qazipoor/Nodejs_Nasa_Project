@@ -1,6 +1,7 @@
+const path = require("path");
 const express = require("express");
 const cors = require("cors");
-const path = require("path");
+const morgan = require("morgan");
 
 const planetsRouter = require("./routes/planets/planets.router");
 
@@ -8,7 +9,6 @@ const app = express();
 
 // Middlewares
 const corsWhiteList = [
-    "http://localhost:8000",
     "http://localhost:3000"
 ];
 app.use(
@@ -22,6 +22,8 @@ app.use(
     },
   })
 );
+
+app.use(morgan("combined"));
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "..", "public")));
