@@ -16,14 +16,20 @@ const isHabitablePlanet = (planet) => {
         && planet['koi_prad'] <= 1.6;
 }
 
-const planetsDataPath = path.join(__dirname, '..', 'kepler_data.csv');
+const planetsDataPath = path.join(__dirname, '..', '..', 'data', 'kepler_data.csv');
 
 fs.createReadStream(planetsDataPath)
     .pipe(csvParser)
     .on('data', (data) => {
-        if(isHabitablePlanet(data)) {
+        if (isHabitablePlanet(data)) {
             planets.push(data);
         }
     })
+    .on('error', (err) => {
+        console.error(err);
+    })
+    .on('end', () => {
+        console.log(`${planets.length} habitable planets found!`);
+    });
 
 module.exports = planets;
