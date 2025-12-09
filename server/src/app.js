@@ -1,24 +1,35 @@
-const express = require('express');
-const cors = require('cors');
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
 
-const planetsRouter = require('./routes/planets/planets.router');
+const planetsRouter = require("./routes/planets/planets.router");
 
 const app = express();
 
 // Middlewares
-const corsWhiteList = ['http://localhost:3000'];
-app.use(cors({
+const corsWhiteList = [
+    "http://localhost:8000",
+    "http://localhost:3000"
+];
+app.use(
+  cors({
     origin: function (origin, callback) {
-        if (corsWhiteList.indexOf(origin) !== -1 || !origin) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    }
-}));
+      if (corsWhiteList.indexOf(origin) !== -1 || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+  })
+);
+
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "..", "public")));
 
 // Routes
-app.use('/', planetsRouter);
+app.use(planetsRouter);
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "index.html"));
+});
 
 module.exports = app;
